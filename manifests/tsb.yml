@@ -32,7 +32,7 @@ instance_groups:
               password: ((tsb_user.password))
             credhub:
               client: credhub_tsb_client
-              secret: /((director_name))/cf/credhub_tsb_client_secret
+              secret: /((director_name))/((cf_deployment_name))/credhub_tsb_client_secret
 
 
 variables:
@@ -40,7 +40,7 @@ variables:
     options:
       alternative_names:
         - tsb.service.cf.internal
-      ca: /((director_name))/cf/service_cf_internal_ca
+      ca: /((director_name))/((cf_deployment_name))/service_cf_internal_ca
       common_name: tsb.service.cf.internal
   - name: tsb_user
     type: user
