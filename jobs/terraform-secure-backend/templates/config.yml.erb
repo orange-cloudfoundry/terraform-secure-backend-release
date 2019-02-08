@@ -22,7 +22,7 @@ credhub_client: <%= p('tsb.credhub.client') %>
 credhub_secret: <%= p('tsb.credhub.secret') %>
 skip_ssl_validation: false
 cef: <%= p('tsb.cef.enabled') %>
-    <% if_p('tsb.ssl_cert') do %>
+    <% if_p('tsb.cef.enabled') do %>
 cef-file: /var/vcap/sys/log/terraform-secure-backend/security_events.log
     <% end %>
 
