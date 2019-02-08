@@ -45,6 +45,20 @@ variables:
   - name: tsb_user
     type: user
 
+update:
+  canaries: 1
+  max_in_flight: 32
+  canary_watch_time: 1000-100000
+  update_watch_time: 1000-100000
+  serial: false
+
+stemcells:
+  - alias: default
+    os: ubuntu-xenial
+    version: latest
+
+manifest_version: v1.2.0
+
 releases:
   - name: terraform-secure-backend
     version: "1.2.0"
