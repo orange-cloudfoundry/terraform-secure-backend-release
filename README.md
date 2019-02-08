@@ -5,7 +5,7 @@ A bosh release to deploy [terraform-secure-backend](https://github.com/orange-cl
 ## Prerequisite
 
 Assumption has been made that you are using 
-[BBL](https://github.com/orange-cloudfoundry/bosh-bootloader) with  
+[BBL](https://github.com/orange-cloudfoundry/bosh-bootloader) with 
 [cf-deployment](https://github.com/cloudfoundry/cf-deployment/) which include a deployed credhub
 
 ### Deploy It !
