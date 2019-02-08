@@ -19,7 +19,9 @@ bosh -d terraform-secure-backend deploy manifests/tsb.yml \
     -v director_name=<your bosh director name> \
     -v cf_deployment_name=cf
 ```
-4. *(Optional)* You probably want to make terraform-secure-backend available outside of your 
+4. Retrieve user and password used for backend with credhub (the one in your bosh director): 
+`credhub get --name=/<your bosh director name>/terraform-secure-backend/tsb_user`
+5. *(Optional)* You probably want to make terraform-secure-backend available outside of your 
 cf network, simply add ops-file [/manifests/operators/enable-cef.yml](/manifests/operators/enable-cf-route-registrar.yml) 
 to your deployment. This will register a `tsb.((system_domain))` route to your gorouters.
 
