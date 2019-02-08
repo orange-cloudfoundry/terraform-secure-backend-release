@@ -33,6 +33,7 @@ instance_groups:
             credhub:
               client: credhub_tsb_client
               secret: ((/((director_name))/((cf_deployment_name))/credhub_tsb_client_secret))
+              tls: ((/((director_name))/((cf_deployment_name))/credhub_tls))
 
 
 variables:

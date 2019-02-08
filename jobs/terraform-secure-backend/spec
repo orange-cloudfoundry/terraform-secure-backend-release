@@ -74,6 +74,9 @@ properties:
   tsb.credhub.secret:
     description: "an UAA client_secret with credhub.read and credhub.write scopes (this can be empty if tsb.credhub.username and tsb.credhub.password are set)"
     default: ""
+  tsb.credhub.tls:
+    description: "Certificate and private key for TLS connection to CredHub API"
+    type: certificate
 
   tsb.credhub.dns.domain:
     description: |

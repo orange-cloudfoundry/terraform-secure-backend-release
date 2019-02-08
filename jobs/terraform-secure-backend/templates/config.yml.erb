@@ -1,7 +1,7 @@
 host: <%= p('tsb.host') %>
 port: <%= p('tsb.port') %>
 name: <%= p('tsb.name') %>
-    <% if_p('tsb.ssl_cert', 'tsb.ssl_key') do %>
+    <% if_p('tsb.tls') do %>
 cert: /var/vcap/jobs/terraform-secure-backend/config/certs/ssl_cert.pem
 key: /var/vcap/jobs/terraform-secure-backend/config/certs/ssl_key.pem
     <% end %>
