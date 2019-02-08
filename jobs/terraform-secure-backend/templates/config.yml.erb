@@ -14,7 +14,7 @@ password: <%= p('tsb.auth.password') %>
 show_error: <%= p('tsb.show_error') %>
     <% if_link("credhub") do |credhub| %>
 credhub_server: <%= "#{p("tsb.credhub.hostname")}:#{credhub.p("credhub.port")}" %>
-credhub_ca_cert: "<%= p('tsb.credhub.tls.certificate') %>"
+credhub_ca_cert: "<%= p('tsb.credhub.tls.ca') %>"
     <% end %>
 credhub_username: <%= p('tsb.credhub.username') %>
 credhub_password: <%= p('tsb.credhub.password') %>
