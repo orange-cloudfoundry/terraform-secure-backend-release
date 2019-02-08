@@ -7,7 +7,7 @@ templates:
   ssl_cert.pem.erb: config/certs/ssl_cert.pem
   ssl_key.pem.erb: config/certs/ssl_key.pem
   credhub_ca.crt.erb: config/certs/credhub_ca.crt
-  dns/aliases.json.erb: dns/aliases.json
+  aliases.json.erb: dns/aliases.json
 
 packages:
 - terraform-secure-backend
