@@ -29,5 +29,5 @@ to your deployment. This will register a `tsb.((system_domain))` route to your g
 
 - [/manifests/operators/enable-cef.yml](/manifests/operators/enable-cef.yml): Enable security event in common 
 event format which will be stored at `/var/vcap/sys/log/terraform-secure-backend/security_events.log`
-- [/manifests/operators/enable-cef.yml](/manifests/operators/enable-cf-route-registrar.yml): Register `tsb.((system_domain))` 
+- [/manifests/operators/enable-cf-route-registrar.yml](/manifests/operators/enable-cf-route-registrar.yml): Register `tsb.((system_domain))` 
 route to your gorouter (**Note**: gorouter will talk to it in full tls). Do not forget to set var `system_domain` when deploying
