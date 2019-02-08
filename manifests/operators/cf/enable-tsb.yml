@@ -6,12 +6,10 @@
     secret: ((credhub_tsb_client_secret))
 
 - type: replace
-  path: /instance_groups/name=credhub/jobs/name=credhub
+  path: /instance_groups/name=credhub/jobs/name=credhub/provides?/credhub?
   value:
-    provides:
-      credhub:
-        as: credhub
-        shared: true
+    as: credhub
+    shared: true
 
 - type: replace
   path: /addons/name=bosh-dns-aliases/jobs/name=bosh-dns-aliases/properties/aliases/-
