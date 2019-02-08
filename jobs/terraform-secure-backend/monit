@@ -1,0 +1,5 @@
+check process terraform-secure-backend
+  with pidfile   /var/vcap/sys/run/bpm/terraform-secure-backend/terraform-secure-backend.pid
+  start program "/var/vcap/jobs/bpm/bin/bpm start terraform-secure-backend"
+  stop program  "/var/vcap/jobs/bpm/bin/bpm stop  terraform-secure-backend"
+  group vcap
