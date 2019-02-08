@@ -37,6 +37,7 @@ instance_groups:
 
 variables:
   - name: tsb_ssl
+    type: certificate
     options:
       alternative_names:
         - tsb.service.cf.internal
