@@ -6,6 +6,7 @@ templates:
   config.yml.erb: config/config.yml
   ssl_cert.pem.erb: config/certs/ssl_cert.pem
   ssl_key.pem.erb: config/certs/ssl_key.pem
+  credhub_ca.crt.erb: config/certs/credhub_ca.crt
   aliases.json.erb: dns/aliases.json
 
 packages:
