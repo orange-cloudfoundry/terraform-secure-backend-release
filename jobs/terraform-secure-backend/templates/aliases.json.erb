@@ -6,5 +6,8 @@ end
 {
   "credhub.service.cf.internal": [
     "*.<%= canonicalize(p('tsb.credhub.dns.instance_group')) %>.<%= canonicalize(p('tsb.credhub.dns.network')) %>.<%= canonicalize(p('tsb.credhub.dns.deployment')) %>.<%= canonicalize(p('tsb.credhub.dns.domain')) %>"
+  ],
+  "uaa.service.cf.internal": [
+    "*.<%= canonicalize(p('tsb.uaa.dns.instance_group')) %>.<%= canonicalize(p('tsb.uaa.dns.network')) %>.<%= canonicalize(p('tsb.uaa.dns.deployment')) %>.<%= canonicalize(p('tsb.uaa.dns.domain')) %>"
   ]
 }

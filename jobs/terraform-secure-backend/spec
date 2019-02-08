@@ -95,6 +95,23 @@ properties:
       Instance group where to found credhub
     default: "credhub"
 
+  tsb.uaa.dns.domain:
+    description: |
+      Domain where to found uaa
+    default: "bosh"
+  tsb.uaa.dns.network:
+    description: |
+      Network where to found uaa
+    default: "default"
+  tsb.uaa.dns.deployment:
+    description: |
+      Deployment where to found uaa
+    default: "cf"
+  tsb.uaa.dns.instance_group:
+    description: |
+      Instance group where to found uaa
+    default: "uaa"
+
 
   tsb.cef.enabled:
     description: "set to true to enable security event in common event format "
