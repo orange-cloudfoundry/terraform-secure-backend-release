@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -eux
+
+mkdir -p ${BOSH_INSTALL_TARGET}/bin
+tar xzvf ${BOSH_COMPILE_TARGET}/terraform-secure-backend/terraform-secure-backend.linux-amd64.tgz -C "${BOSH_COMPILE_TARGET}"
+cp ${BOSH_COMPILE_TARGET}/terraform-secure-backend ${BOSH_INSTALL_TARGET}/bin

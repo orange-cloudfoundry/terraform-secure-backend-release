@@ -1,0 +1,10 @@
+<%
+def canonicalize(str)
+  str.downcase.gsub(/_/, "-").gsub(/[^a-z0-9\-\*]/, "")
+end
+%>
+{
+  "credhub.service.cf.internal": [
+    "*.<%= canonicalize(p('tsb.credhub.dns.instance_group')) %>.<%= canonicalize(p('tsb.credhub.dns.network')) %>.<%= canonicalize(p('tsb.credhub.dns.deployment')) %>.<%= canonicalize(p('tsb.credhub.dns.domain')) %>"
+  ]
+}

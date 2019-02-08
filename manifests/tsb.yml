@@ -1,0 +1,48 @@
+---
+name: terraform-secure-backend
+
+instance_groups:
+  - name: terraform-secure-backend
+    azs:
+      - z1
+    instances: 1
+    vm_type: default
+    stemcell: default
+    networks:
+      - name: default
+    jobs:
+      - name: bpm
+        release: bpm
+      - name: terraform-secure-backend
+        release: terraform-secure-backend
+        properties:
+          tsb:
+            name: terraform-secure
+            tls: ((tsb_ssl))
+            auth:
+              username: ((tsb_user.username))
+              password: ((tsb_user.password))
+            credhub:
+              client: credhub_tsb_client
+              secret: /((director_name))/cf/credhub_tsb_client_secret
+
+
+variables:
+  - name: tsb_ssl
+    options:
+      alternative_names:
+        - tsb.service.cf.internal
+      ca: /((director_name))/cf/service_cf_internal_ca
+      common_name: tsb.service.cf.internal
+  - name: tsb_user
+    type: user
+
+releases:
+  - name: terraform-secure-backend
+    version: "1.2.0"
+    url: https://github.com/orange-cloudfoundry/terraform-secure-backend-release/releases/download/v1.2.0/terraform-secure-backend-1.2.0.tgz
+    sha1: 611d5f107411ddd2ed37ee5b8a5a8b9cd6102b2c
+  - name: bpm
+    url: https://bosh.io/d/github.com/cloudfoundry-incubator/bpm-release?v=1.0.2
+    version: 1.0.2
+    sha1: 41cb53a672e59581577af5ed11abf04d61cf3887

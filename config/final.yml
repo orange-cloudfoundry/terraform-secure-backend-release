@@ -1,0 +1,5 @@
+name: terraform-secure-backend
+blobstore:
+  provider: s3
+  options:
+    bucket_name: orange-dfy-terraform-secure-backend-release

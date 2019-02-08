@@ -1,0 +1,3 @@
+- type: replace
+  path: /instance_groups/name=terraform-secure-backend/jobs/name=terraform-secure-backend/properties/tsb/cef?/enabled?
+  value: true

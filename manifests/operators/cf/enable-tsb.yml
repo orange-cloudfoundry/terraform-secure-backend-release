@@ -1,0 +1,34 @@
+- type: replace
+  path: /instance_groups/name=uaa/jobs/name=uaa/properties/uaa/clients/credhub_tsb_client?
+  value:
+    authorities: credhub.read,credhub.write
+    authorized-grant-types: client_credentials
+    secret: ((credhub_tsb_client_secret))
+
+- type: replace
+  path: /addons/name=bosh-dns-aliases/jobs/name=bosh-dns-aliases/properties/aliases/-
+  value:
+    domain: tsb.service.cf.internal
+    targets:
+      - deployment: terraform-secure-backend
+        domain: bosh
+        instance_group: terraform-secure-backend
+        network: default
+        query: '*'
+
+- type: replace
+  path: /instance_groups/name=credhub/jobs/name=credhub/properties/credhub/authorization/permissions/-
+  value:
+    actors:
+      - uaa-client:credhub_tsb_client
+    operations:
+      - read
+      - write
+      - delete
+    path: /terraform-secure-backend/tfstate/*
+
+- type: replace
+  path: /variables/-
+  value:
+    name: credhub_tsb_client_secret
+    type: password

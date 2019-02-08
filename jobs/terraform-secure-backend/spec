@@ -1,0 +1,87 @@
+---
+name: terraform-secure-backend
+
+templates:
+  bpm.yml: config/bpm.yml
+  config.yml.erb: config/config.yml
+  ssl_cert.pem.erb: config/certs/ssl_cert.pem
+  ssl_key.pem.erb: config/certs/ssl_key.pem
+  credhub_ca.crt.erb: config/certs/credhub_ca.crt
+  dns/aliases.json.erb: dns/aliases.json
+
+packages:
+- terraform-secure-backend
+
+consumes:
+- name: credhub
+  type: credhub
+  optional: false
+
+properties:
+  tsb.host:
+    description: "interface to listen, can be 127.0.0.1 too"
+    default: "0.0.0.0"
+  tsb.port:
+    description: "port to listen"
+    default: "8081"
+  tsb.name:
+    description: "this name inside credhub to create an unique path for your tfstate"
+    default: "terraform-secure"
+  tsb.show_error:
+    description: "If true, if an error occurred details will be shown in the web page as json "
+    default: true
+
+  tsb.tls:
+    description: "Certificate and private key for TLS connection to terraform-secure-backend"
+    type: certificate
+    default: ""
+
+  tsb.log.level:
+    description: "Verbosity, can be info, debug, warning, error"
+    default: "info"
+  tsb.log.json:
+    description: "set to true to see logs as json instead of plain text"
+    default: true
+
+  tsb.auth.username:
+    description: "basic auth username to secure access to this app"
+  tsb.auth.password:
+    description: "basic auth password to secure access to this app"
+
+  tsb.credhub.hostname:
+    description: "Hostname to your credhub server (note https is enforced)"
+    default: "credhub.service.cf.internal"
+  tsb.credhub.username:
+    description: "an UAA username with credhub.read and credhub.write scopes (this can be empty if tsb.credhub.client and tsb.credhub.secret are set)"
+    default: ""
+  tsb.credhub.password:
+    description: "an UAA password with credhub.read and credhub.write scopes (this can be empty if tsb.credhub.client and tsb.credhub.secret are set)"
+    default: ""
+  tsb.credhub.client:
+    description: "an UAA client_id with credhub.read and credhub.write scopes (this can be empty if tsb.credhub.username and tsb.credhub.password are set)"
+    default: ""
+  tsb.credhub.secret:
+    description: "an UAA client_secret with credhub.read and credhub.write scopes (this can be empty if tsb.credhub.username and tsb.credhub.password are set)"
+    default: ""
+
+  tsb.credhub.dns.domain:
+    description: |
+      Domain where to found credhub
+    default: "bosh"
+  tsb.credhub.dns.network:
+    description: |
+      Network where to found credhub
+    default: "default"
+  tsb.credhub.dns.deployment:
+    description: |
+      Deployment where to found credhub
+    default: "cf"
+  tsb.credhub.dns.instance_group:
+    description: |
+      Instance group where to found credhub
+    default: "credhub"
+
+
+  tsb.cef.enabled:
+    description: "set to true to enable security event in common event format "
+    default: false

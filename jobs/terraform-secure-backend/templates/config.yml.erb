@@ -1,0 +1,29 @@
+host: <%= p('tsb.host') %>
+port: <%= p('tsb.port') %>
+name: <%= p('tsb.name') %>
+    <% if_p('tsb.ssl_cert', 'tsb.ssl_key') do %>
+cert: /var/vcap/jobs/terraform-secure-backend/config/certs/ssl_cert.pem
+key: /var/vcap/jobs/terraform-secure-backend/config/certs/ssl_key.pem
+    <% end %>
+log_level: <%= p('tsb.log.level') %>
+log_json: <%= p('tsb.log.json') %>
+no_color: true
+lets_encrypt_domains: []
+username: <%= p('tsb.auth.username') %>
+password: <%= p('tsb.auth.password') %>
+show_error: <%= p('tsb.show_error') %>
+    <% if_link("credhub") do |credhub| %>
+credhub_server: <%= "#{p("tsb.credhub.hostname")}:#{credhub.p("credhub.port")}" %>
+credhub_ca_cert: "/var/vcap/jobs/terraform-secure-backend/config/certs/credhub_ca.crt"
+    <% end %>
+credhub_username: <%= p('tsb.credhub.username') %>
+credhub_password: <%= p('tsb.credhub.password') %>
+credhub_client: <%= p('tsb.credhub.client') %>
+credhub_secret: <%= p('tsb.credhub.secret') %>
+skip_ssl_validation: false
+cef: <%= p('tsb.cef.enabled') %>
+    <% if_p('tsb.ssl_cert') do %>
+cef-file: /var/vcap/sys/log/terraform-secure-backend/security_events.log
+    <% end %>
+
+
