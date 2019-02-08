@@ -15,6 +15,14 @@ instance_groups:
         release: bpm
       - name: terraform-secure-backend
         release: terraform-secure-backend
+        consumes:
+          credhub:
+            from: credhub
+            deployment: ((cf_deployment_name))
+        provides:
+          terraform-secure-backend:
+            as: terraform-secure-backend
+            shared: true
         properties:
           tsb:
             name: terraform-secure

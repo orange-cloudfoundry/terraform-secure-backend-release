@@ -12,6 +12,17 @@ templates:
 packages:
 - terraform-secure-backend
 
+provides:
+- name: terraform-secure-backend
+  type: terraform-secure-backend
+  properties:
+  - tsb.port
+  - tsb.tls
+  - tsb.name
+  - tsb.auth.username
+  - tsb.auth.password
+
+
 consumes:
 - name: credhub
   type: credhub

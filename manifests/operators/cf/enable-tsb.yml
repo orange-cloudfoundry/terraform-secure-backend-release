@@ -6,6 +6,14 @@
     secret: ((credhub_tsb_client_secret))
 
 - type: replace
+  path: /instance_groups/name=credhub/jobs/name=credhub
+  value:
+    provides:
+      credhub:
+        as: credhub
+        shared: true
+
+- type: replace
   path: /addons/name=bosh-dns-aliases/jobs/name=bosh-dns-aliases/properties/aliases/-
   value:
     domain: tsb.service.cf.internal
