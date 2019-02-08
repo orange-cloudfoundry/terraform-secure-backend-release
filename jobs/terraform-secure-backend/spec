@@ -95,6 +95,10 @@ properties:
       Instance group where to found credhub
     default: "credhub"
 
+  tsb.uaa.tls:
+    description: "Certificate and private key for TLS connection to UAA"
+    type: certificate
+
   tsb.uaa.dns.domain:
     description: |
       Domain where to found uaa
