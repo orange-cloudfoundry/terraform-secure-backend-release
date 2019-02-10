@@ -4,4 +4,4 @@ name: terraform-secure-backend
 dependencies: []
 
 files:
-- terraform-secure-backend/terraform-secure-backend.linux-amd64.tgz
+- terraform-secure-backend/terraform-secure-backend.linux-amd64.zip

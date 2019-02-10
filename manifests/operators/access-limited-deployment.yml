@@ -1,0 +1,77 @@
+- type: remove
+  path: /instance_groups/name=terraform-secure-backend/jobs/name=terraform-secure-backend/properties/tsb/tls
+
+- type: replace
+  path: /instance_groups/name=terraform-secure-backend/jobs/name=terraform-secure-backend/properties/tsb/port?
+  value: 8082
+
+- type: replace
+  path: /instance_groups/name=terraform-secure-backend/jobs/name=terraform-secure-backend/properties/tsb/host?
+  value: 127.0.0.1
+
+- type: replace
+  path: /variables/-
+  value:
+    name: tsb_limited_user
+    type: user
+    options:
+      include_special: true
+
+- type: replace
+  path: /instance_groups/name=terraform-secure-backend/jobs/-
+  value:
+    name: gobis
+    release: gobis
+    properties:
+      gobis:
+        port: 8081
+        tls: ((tsb_ssl))
+        routes:
+          - name: tsb-limited
+            path: /states/((deployment_name))
+            url: http://((tsb_user.username)):((tsb_user.password))@127.0.0.1:8082
+            middleware_params:
+              basic_auth_passthrough: true
+              basic2token: &basic2token
+                enabled: true
+                access_token_uri: https://uaa.service.cf.internal/oauth/token
+                client_id: cf
+                trust_current_user: true
+              jwt: &jwt
+                enabled: true
+                alg: RS256
+                secret: ((/((director_name))/((cf_deployment_name))/uaa_jwt_signing_key.public_key))
+                issuer: https://uaa.service.cf.internal
+                trust_current_user: true
+              basic_auth:
+                - user: ((tsb_limited_user.username))
+                  password: ((tsb_limited_user.password))
+              casbin:
+                enabled: true
+                policies:
+                  - {type: p, sub: "((tsb_limited_user.username))", obj: "/*", act: "*"}
+                  - {type: p, sub: "cloud_controller.admin", obj: "/*", act: "*"}
+          - name: tsb-all
+            path: /**
+            url: http://((tsb_user.username)):((tsb_user.password))@127.0.0.1:8082
+            middleware_params:
+              basic_auth_passthrough: true
+              basic2token: *basic2token
+              jwt: *jwt
+              basic_auth:
+                - user: ((tsb_limited_user.username))
+                  password: ((tsb_limited_user.password))
+                - user: ((tsb_user.username))
+                  password: ((tsb_user.password))
+              casbin:
+                enabled: true
+                policies:
+                  - {type: p, sub: "((tsb_limited_user.username))", obj: "/*", act: "*"}
+                  - {type: p, sub: "((tsb_user.username))", obj: "/*", act: "*"}
+                  - {type: p, sub: "cloud_controller.admin", obj: "/*", act: "*"}
+
+- type: replace
+  path: /releases/-
+  value:
+    name: gobis
+    version: latest

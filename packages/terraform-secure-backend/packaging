@@ -3,5 +3,5 @@ set -eux
 
 mkdir -p ${BOSH_INSTALL_TARGET}/bin
 mkdir -p ${BOSH_COMPILE_TARGET}/bin
-tar xzvf ${BOSH_COMPILE_TARGET}/terraform-secure-backend/terraform-secure-backend.linux-amd64.tgz -C "${BOSH_COMPILE_TARGET}"/bin
-cp ${BOSH_COMPILE_TARGET}/bin/terraform-secure-backend ${BOSH_INSTALL_TARGET}/bin
+unzip ${BOSH_COMPILE_TARGET}/terraform-secure-backend/terraform-secure-backend.linux-amd64.zip -d "${BOSH_COMPILE_TARGET}"/bin
+cp ${BOSH_COMPILE_TARGET}/bin/terraform-secure-backend* ${BOSH_INSTALL_TARGET}/bin/gobis-server

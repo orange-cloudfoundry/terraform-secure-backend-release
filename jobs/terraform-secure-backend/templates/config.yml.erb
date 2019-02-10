@@ -25,5 +25,5 @@ cef: <%= p('tsb.cef.enabled') %>
     <% if_p('tsb.cef.enabled') do %>
 cef-file: /var/vcap/sys/log/terraform-secure-backend/security_events.log
     <% end %>
-
+auth-url: <%= p('tsb.uaa.url') %>
 

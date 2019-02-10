@@ -95,6 +95,10 @@ properties:
       Instance group where to found credhub
     default: "credhub"
 
+  tsb.uaa.url:
+    description: "enforce to use uaa url"
+    default: "https://uaa.service.cf.internal"
+
   tsb.uaa.tls:
     description: "Certificate and private key for TLS connection to UAA"
     type: certificate
