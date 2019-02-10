@@ -74,4 +74,6 @@
   path: /releases/-
   value:
     name: gobis
-    version: latest
+    version: "1.6.0"
+    url: https://github.com/orange-cloudfoundry/gobis-boshrelease/releases/download/v1.6.0/gobis-release-1.6.0.tgz
+    sha1: 460fbf1199d78dc8a17ccdbbd83161cec7690aee
