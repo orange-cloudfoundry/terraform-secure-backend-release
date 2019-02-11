@@ -97,7 +97,7 @@ properties:
 
   tsb.uaa.url:
     description: "enforce to use uaa url"
-    default: "https://uaa.service.cf.internal:8844"
+    default: "https://uaa.service.cf.internal:8443"
 
   tsb.uaa.tls:
     description: "Certificate and private key for TLS connection to UAA"

@@ -67,7 +67,7 @@ releases:
   - name: terraform-secure-backend
     version: "1.2.1"
     url: https://github.com/orange-cloudfoundry/terraform-secure-backend-release/releases/download/v1.2.1/terraform-secure-backend-1.2.1.tgz
-    sha1: a325413a404205fb298dd0e5ba973e97c43e3428
+    sha1: fa9bbb9b2d261b21253855b2d1f1f77e60822d33
   - name: bpm
     url: https://bosh.io/d/github.com/cloudfoundry-incubator/bpm-release?v=1.0.2
     version: 1.0.2
