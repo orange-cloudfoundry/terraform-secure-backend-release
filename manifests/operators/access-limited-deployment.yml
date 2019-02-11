@@ -20,6 +20,14 @@
 - type: replace
   path: /instance_groups/name=terraform-secure-backend/jobs/-
   value:
+    name: ca_certs
+    release: os-conf
+    properties:
+      certs: ((/((director_name))/((cf_deployment_name))/uaa_ca.certificate))
+
+- type: replace
+  path: /instance_groups/name=terraform-secure-backend/jobs/-
+  value:
     name: gobis
     release: gobis
     properties:
@@ -70,6 +78,14 @@
                   - {type: p, sub: "((tsb_limited_user.username))", obj: "/*", act: "*"}
                   - {type: p, sub: "((tsb_user.username))", obj: "/*", act: "*"}
                   - {type: p, sub: "cloud_controller.admin", obj: "/*", act: "*"}
+
+- type: replace
+  path: /releases/-
+  value:
+    name: os-conf
+    version: 20.0.0
+    url: https://bosh.io/d/github.com/cloudfoundry/os-conf-release?v=20.0.0
+    sha1: a60187f038d45e2886db9df82b72a9ab5fdcc49d
 
 - type: replace
   path: /releases/-
