@@ -38,7 +38,7 @@
           - name: tsb-limited
             show_error: true
             path: /states/((deployment_name))
-            url: http://((tsb_user.username)):((tsb_user.password))@127.0.0.1:8082
+            url: http://((tsb_user.username)):((tsb_user.password))@127.0.0.1:8082/states/((deployment_name))
             middleware_params:
               basic_auth_passthrough: true
               basic2token: &basic2token
