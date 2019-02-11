@@ -28,13 +28,14 @@
         tls: ((tsb_ssl))
         routes:
           - name: tsb-limited
+            show_error: true
             path: /states/((deployment_name))
             url: http://((tsb_user.username)):((tsb_user.password))@127.0.0.1:8082
             middleware_params:
               basic_auth_passthrough: true
               basic2token: &basic2token
                 enabled: true
-                access_token_uri: https://uaa.service.cf.internal/oauth/token
+                access_token_uri: https://uaa.service.cf.internal:8443/oauth/token
                 client_id: cf
                 trust_current_user: true
               jwt: &jwt
@@ -54,6 +55,7 @@
             path: /**
             url: http://((tsb_user.username)):((tsb_user.password))@127.0.0.1:8082
             middleware_params:
+              show_error: true
               basic_auth_passthrough: true
               basic2token: *basic2token
               jwt: *jwt
@@ -75,4 +77,4 @@
     name: gobis
     version: "1.6.0"
     url: https://github.com/orange-cloudfoundry/gobis-boshrelease/releases/download/v1.6.0/gobis-release-1.6.0.tgz
-    sha1: 460fbf1199d78dc8a17ccdbbd83161cec7690aee
+    sha1: 543fa007457100b8647f12c1f19ff773921c2a8f
