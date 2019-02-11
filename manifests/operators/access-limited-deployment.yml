@@ -41,7 +41,6 @@
                 enabled: true
                 alg: RS256
                 secret: ((/((director_name))/((cf_deployment_name))/uaa_jwt_signing_key.public_key))
-                issuer: https://uaa.service.cf.internal
                 trust_current_user: true
               basic_auth:
                 - user: ((tsb_limited_user.username))

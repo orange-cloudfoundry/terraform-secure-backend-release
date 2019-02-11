@@ -10,23 +10,23 @@ templates:
   aliases.json.erb: dns/aliases.json
 
 packages:
-- terraform-secure-backend
+  - terraform-secure-backend
 
 provides:
-- name: terraform-secure-backend
-  type: terraform-secure-backend
-  properties:
-  - tsb.port
-  - tsb.tls
-  - tsb.name
-  - tsb.auth.username
-  - tsb.auth.password
+  - name: terraform-secure-backend
+    type: terraform-secure-backend
+    properties:
+      - tsb.port
+      - tsb.tls
+      - tsb.name
+      - tsb.auth.username
+      - tsb.auth.password
 
 
 consumes:
-- name: credhub
-  type: credhub
-  optional: false
+  - name: credhub
+    type: credhub
+    optional: false
 
 properties:
   tsb.host:
@@ -97,7 +97,7 @@ properties:
 
   tsb.uaa.url:
     description: "enforce to use uaa url"
-    default: "https://uaa.service.cf.internal"
+    default: "https://uaa.service.cf.internal:8844"
 
   tsb.uaa.tls:
     description: "Certificate and private key for TLS connection to UAA"
