@@ -1,0 +1,19 @@
+name: terraform-secure-backend
+version: 1.3.0
+commit_hash: 726bc3f
+uncommitted_changes: true
+jobs:
+- name: terraform-secure-backend
+  version: 8ce54368732b58d6432f1955f2f0e022cc644576
+  fingerprint: 8ce54368732b58d6432f1955f2f0e022cc644576
+  sha1: 960ca1f68ccc1de6b46789b1294bdf1c4f0d2535
+packages:
+- name: terraform-secure-backend
+  version: 00455c7bee98043d521ff68565c95c2d1ea41916
+  fingerprint: 00455c7bee98043d521ff68565c95c2d1ea41916
+  sha1: c2e418943618bc6c205abff7e2b694b7ca662c90
+  dependencies: []
+license:
+  version: ab9f1cc7396017b1de3145bd7dc0ef79f2e32304
+  fingerprint: ab9f1cc7396017b1de3145bd7dc0ef79f2e32304
+  sha1: 4781a6b7fc8b8e29cfb84cb45cc36be24e43a5cf
