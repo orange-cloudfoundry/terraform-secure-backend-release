@@ -35,9 +35,12 @@ properties:
   tsb.port:
     description: "port to listen"
     default: "8081"
-  tsb.name:
-    description: "this name inside credhub to create an unique path for your tfstate"
-    default: "terraform-secure"
+  tsb.chunk_size:
+    description: "Chunk size in number of bytes to split your tfstate inside credhub to leverage database limit"
+    default: 60000
+  tsb.base_path:
+    description: "Create an unique path for your tfstate on credhub"
+    default: "/terraform-secure-backend/tfstate/terraform-secure"
   tsb.show_error:
     description: "If true, if an error occurred details will be shown in the web page as json "
     default: true
